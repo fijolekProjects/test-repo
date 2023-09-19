@@ -1,0 +1,11 @@
+{
+  "tableName": "percona_test_table_to_delete",
+  "alterStatement": "ADD COLUMN test_column_added_by_percona VARCHAR(64)",
+  "perconaOptions": [
+    "--no-check-unique-key-change",
+    "--critical-load", "Threads_running=1700",
+    "--max-load", "Threads_running=300",
+    "--set-vars", "lock_wait_timeout=10,innodb_lock_wait_timeout=10",
+    "--print"
+  ]
+}
