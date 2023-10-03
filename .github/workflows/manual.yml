@@ -6,17 +6,35 @@ name: Manual workflow
 # or API.
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
+    # # Inputs the workflow accepts.
     inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
-        required: true
-        # The data type of the input
-        type: string
+      command:
+        type: choice
+        description: Action to run
+        # default: 'World123999'
+        options:
+        - percona dry-run
+        - schema migrate 
+        - db migrate
+        - data migrate
+
+        # # Friendly description to be shown in the UI instead of 'name'
+        # description: 'Person to greet'
+        # # Default value if no value is explicitly provided
+        # default: 'World123'
+        # # Input has to be provided for the workflow to run
+        # required: true
+        # # The data type of the input
+        # type: string
+    #   name2:
+    #     # Friendly description to be shown in the UI instead of 'name'
+    #     description: 'Person to greet2'
+    #     # Default value if no value is explicitly provided
+    #     default: 'World123999'
+    #     # Input has to be provided for the workflow to run
+    #     required: true
+    #     # The data type of the input
+    #     type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -28,13 +46,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Checkout
+    - name: Checkout 123
       uses: actions/checkout@v3
-    - name: List files
+    - name: List files 123
       run: ls -ltrh
     - name: Git status
       run: git status
-    - name: Run ocker
+    - name: docker ps
+      run: docker ps
+    - name: Run docker
       run: docker run --name hello-world-container -v db:/path/in/container hello-world
     - name: Send greeting
-      run: echo "Hello ${{ inputs.name }}"
+      run: echo "Hello ${{ inputs.command }}"
