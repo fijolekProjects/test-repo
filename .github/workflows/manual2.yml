@@ -28,9 +28,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Checkout
+    - name: Checkout 123
       uses: actions/checkout@v3
-    - name: List files
+    - name: List files 123
       run: ls -ltrh
     - name: Git status
       run: git status
