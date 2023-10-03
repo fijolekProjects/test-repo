@@ -32,5 +32,9 @@ jobs:
       uses: actions/checkout@v3
     - name: List files
       run: ls -ltrh
+    - name: Git status
+      run: git status
+    - name: Run ocker
+      run: docker run --name hello-world-container -v db:/path/in/container hello-world
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
